@@ -33,48 +33,9 @@ body {
             font-weight: 400 !important;
         }
 
-        &.case2 {
-            font-weight: 500 !important;
-        }
-
-        &.case3 {
-            font-weight: 600 !important;
-        }
-
-        &.case4 {
-            font-weight: 700 !important;
-        }
-
         //color
         &.color1 {
             color: color(primary, 100) !important;
-        }
-
-        &.color2 {
-            color: color(etc, 100) !important;
-        }
-
-        &.color3 {
-            color: color(neutral, 060) !important;
-        }
-
-        &.color4 {
-            color: color(system, 070) !important;
-        }
-        &.color5 {
-            color: color(system, 080) !important;
-        }
-        &.color6 {
-            color: color(typo, 020) !important;
-        }
-        &.color7 {
-            color: color(primary, 080) !important;
-        }
-        &.color8 {
-            color: color(typo, 010) !important;
-        }
-        &.color9 {
-            color: color(primary, 070) !important;
         }
     }
 
@@ -105,42 +66,5 @@ body {
                 }
             }
         }
-    }
-
-    .scroll-guide {
-        display: flex;
-        color: color(system,070);
-        align-items: center;
-        gap: 0.8rem;
-        @include font(small-5x, bold);
-        &::after {
-            display: block;
-            width: 1.6rem;
-            height: 1.6rem;
-            content:'';
-            background-image: icon(arrow-down2, color(system,070));
-            background-repeat: no-repeat;
-            background-size: 1rem;
-            background-position: center;
-        }
-    }
-    
-    .no-result-wrap {
-        padding: 16rem 0;
-        text-align: center;
-        .no-result-title {
-            @include font(small-2x,bold);
-            color: color(typo,005);
-        }
-        @include mobile {
-            padding: 8rem 0;
-            .no-result-title {
-                @include font(small-3x,bold);
-            }
-        }
-    }
-
-    .text-bundle {
-        display: inline-block;
     }
 }
