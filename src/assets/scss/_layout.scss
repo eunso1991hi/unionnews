@@ -3,7 +3,13 @@
 }
 
 header {
-    
+    .depth2-wrap {
+        ul li {
+            &.active {
+                color: red;
+            }
+        }
+    }
 }
 
 footer {
