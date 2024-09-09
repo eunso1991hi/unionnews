@@ -1,8 +1,19 @@
 #wrap {
     .main {
-        .main-inner {
-            .local-body {
-                display: flex;
+        .local-body {
+            display: flex;
+            .content {
+                .content-head {
+                    .content-name {
+
+                    }
+                    .content-summary {
+
+                    }
+                }
+                .content-body {
+                    
+                }
             }
         }
     }
