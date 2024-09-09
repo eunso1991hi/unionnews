@@ -1,248 +1,48 @@
 var frontCommon = frontCommon || {};
 frontCommon.Html = (function () {
-  var instance = null;
-  function init() {
-    instance = {
-      reset: function () {
-        frontCommonResize();
-        //frontCommonScroll();
-        header();
-        localAnimations();
-        lenis();
-      },
-
-    };
+    var instance = null;
+    function init() {
+        instance = {
+        reset: function () {
+            frontCommonResize();
+            //frontCommonScroll();
+            header();
+            },
+        };
     return instance;
-  }
-  if (instance) {
-    return instance;
-  } else {
-    return init();
-  }
+    }
+    if (instance) {
+        return instance;
+    } else {
+        return init();
+    }
 })();
 
 function frontCommonResize() {
-  window.addEventListener("resize", () => {
-    const _header = document.getElementById("header")
-    const modalShow = document.querySelector(".modal.show");
-    if(modalShow) {
-        _header.classList.add("regular")
-    }
-  });
+    window.addEventListener("resize", () => {
+        const _header = document.getElementById("header")
+        const modalShow = document.querySelector(".modal.show");
+        if(modalShow) {
+            _header.classList.add("regular")
+        }
+    });
 }
 
 function frontCommonScroll() {
-  window.addEventListener("scroll", () => {
-
-  });
-}
-function lenis() {
-    let lenis = new Lenis()
-    function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-    const _header = document.getElementById("header")
-    const siteNavi = _header.querySelector(".site-navi")
-    const menuHeader = _header.querySelector(".btn.menu-header")
-    const modalData = document.querySelector('[data-bs-toggle="modal"]')
-    const modal = document.querySelectorAll(".modal");
-
-
     window.addEventListener("scroll", () => {
-        if(lenis.direction == -1) {
-            _header.classList.add("up-color")
-            _header.classList.remove("regular")
-            _header.classList.remove("regular-focus")
-            siteNavi.classList.remove("close")
-            if(lenis.animatedScroll < 5) {
-                _header.classList.remove("up-color")
-            }
-        } else {
-            siteNavi.classList.add("close")
-            const focusedElement = document.activeElement
-            if(focusedElement.closest(".depth1-item") || _header.classList.contains("hover")) {
-                _header.classList.add("regular-focus")
-                _header.classList.remove("regular")
-                if(lenis.animatedScroll < 5) {
-                    _header.classList.remove("regular-focus")
-                }
-            } else {
-                if(!_header.classList.contains("open")) {
-                    _header.classList.add("regular")
-                    _header.classList.remove("regular-focus")
-                    if(lenis.animatedScroll < 5) {
-                        _header.classList.remove("up-color")
-                        _header.classList.remove("regular")
-                    }
-                }
-            }
-        }
-    })
 
-    if(lenis.animatedScroll < window.innerHeight) {
-        _header.classList.remove("regular")
-        _header.classList.remove("regular-focus")
-    } else {
-        _header.classList.add("regular")
-    }
-
-    // Mo 헤더 메뉴 클릭시 lenis stop
-    menuHeader.addEventListener("click", function() {
-        const wrap = document.getElementById("wrap")
-        if(_header.classList.contains("open")) {
-            wrap.removeAttribute("style")
-        }
-    })
-    window.addEventListener("resize", () => {
-        const _width = window.innerWidth
-
-        if(_width >= 1024) {
-            lenis.start();
-        }
-    })
-
-    // 팝업창 lenis 스크롤 destroy
-    if(modalData) {
-        modalData.addEventListener("click", function() {
-            _header.style.top = "-7.2rem"
-            modal.forEach(modal => {
-                if(modal) {
-                    if(modal.classList.contains("show")) {
-                        lenis.destroy();
-                    }
-                }
-            });
-        });
-    }
-
-    modal.forEach(modal => {
-        if(modal) {
-            const close = modal.querySelector(".modal-close")
-            close.addEventListener("click", function() {
-                lenis = new Lenis()
-                _header.removeAttribute("style")
-            })
-        }
-    });
-
-    const media = document.querySelector(".section.media")
-    if(media) {
-        let press = media.querySelector(".press-media")
-        const sns = media.querySelector(".sns-media")
-        gsap.to(press, {
-            scrollTrigger: {
-                trigger: sns,
-                start: "top bottom",
-                end: "top bottom",
-
-                onEnter: function() {
-                    const _width = window.innerWidth
-                    if(_width >= 1024) {
-                        press.style.top = window.innerHeight - press.offsetHeight + "px"
-                    }
-                },
-
-                onLeave: function() {
-                    const _width = window.innerWidth
-                    if(_width >= 1024) {
-                        lenis.stop();
-                        media.classList.add("active2")
-                        press = media.querySelector(".press-media")
-
-                        // 현재 메인 문제 없을 시 추후 삭제
-                        // document.addEventListener('keyup', (e) => {
-                            // if (e.key === 'Tab') {
-                            //     const focusedElement = document.activeElement
-                            //     if(focusedElement.closest(".sns-media")) {
-                            //         setTimeout(() => {
-                            //             window.scrollTo(0, press.offsetTop)
-                            //         }, 100);
-                            //     } else if(focusedElement.closest(".press-media")) {
-                            //         media.classList.remove("active2")
-                            //     }
-                            // }
-                        // });
-                        sns.style.marginTop = -press.offsetHeight + "px"
-
-                        setTimeout(() => {
-                            lenis.start();
-                        }, 1000);
-                    }
-                },
-                onEnterBack: function() {
-                    const _width = window.innerWidth
-                    if(_width >= 1024) {
-                        lenis.stop();
-                        media.classList.remove("active2")
-                        sns.style.marginTop = "0"
-                        press.style.top = window.innerHeight - press.offsetHeight + "px"
-                        // 현재 메인 문제 없을 시 추후 삭제
-                        // document.addEventListener('keyup', (e) => {
-                            // if (e.key === 'Tab') {
-                            //     const focusedElement = document.activeElement
-                            //     if(focusedElement.classList.contains("report")) {
-                            //         media.classList.remove("active2")
-                            //         sns.style.marginTop = "0"
-                            //     }
-                            // }
-                        // });
-                        setTimeout(() => {
-                            lenis.start();
-                        }, 1000);
-                    }
-                }
-
-            }
-        })
-    }
-
-    document.addEventListener("keydown", (e) => {
-        if(e.key === 'Tab') {
-            setTimeout(() => {
-                const focusedElement = document.activeElement
-                if(media) {
-                    let press = media.querySelector(".press-media")
-                    if(focusedElement.closest(".press-media")) {
-                        window.scrollTo(0, media.offsetTop + press.style.getPropertyValue(top))
-                    }
-                    if(focusedElement.classList.contains("newest-link") && !e.shiftKey) {
-                        window.scrollTo(0, press.offsetTop - press.offsetHeight + 300)
-                    }
-                }
-                //현재 메인 문제 없을 시 추후 삭제
-                // if(focusedElement.classList.contains("report")) {
-                //     const sns = media.querySelector(".sns-media")
-                //     media.classList.remove("active2")
-                //     sns.style.marginTop = "0"
-                // }
-            }, 0);
-        }
-    })
-}
-function localAnimations() {
-    $header = $('header');
-    $breadcrumb = $('.data-list.breadcrumb');
-
-    $('[data-local-animation="case-1"]').each(function(){
-        $this = $(this);
-        $this.addClass('active');
-
-        // $header.removeClass('light').addClass('transparent');
-        $breadcrumb.removeClass('case1').addClass('case2');
     });
 }
 
 function header() {
     const body = document.querySelector("body")
-  const _header = document.getElementById("header")
-  const depth1Item = _header.querySelectorAll(".depth1-item")
-  const depth1All = document.querySelectorAll('.depth1')
-  const depth2WrapAll = document.querySelectorAll(".depth2-wrap")
-  const siteNavi = _header.querySelector(".site-navi")
+    const _header = document.getElementById("header")
+    const depth1Item = _header.querySelectorAll(".depth1-item")
+    const depth1All = document.querySelectorAll('.depth1')
+    const depth2WrapAll = document.querySelectorAll(".depth2-wrap")
+    const siteNavi = _header.querySelector(".site-navi")
 
-  if (_header) {
+if (_header) {
     window.addEventListener("resize", () => {
         const _width = window.innerWidth
         if(_width >= 1024) {
@@ -263,12 +63,12 @@ function header() {
 
     // depth2가 8개 이상일 때 고유 스타일 추가
     depth1Item.forEach(depth1Item => {
-      const depth2List = depth1Item.querySelector(".depth2-list")
-      const depth2Length = depth2List.querySelectorAll(".depth2-item").length
-      if (depth2Length > 7) {
-        depth2List.style.maxWidth = "73.6rem"
-        depth2List.style.flexWrap = "wrap"
-      }
+        const depth2List = depth1Item.querySelector(".depth2-list")
+        const depth2Length = depth2List.querySelectorAll(".depth2-item").length
+        if (depth2Length > 7) {
+            depth2List.style.maxWidth = "73.6rem"
+            depth2List.style.flexWrap = "wrap"
+        }
     });
 
     // hover, focus 클래스 추가 이벤트
@@ -374,230 +174,27 @@ function header() {
 
     // MO > depth1 드롭다운 열림/닫힘 기능
     document.addEventListener("click", function (e) {
-      const depth1 = e.target
-      if (depth1.classList.contains("depth1")) {
-        const _width = window.innerWidth
-        if (_width < 1024) {
-          if (depth1.classList.contains("active")) {
-            depth1.classList.remove("active")
-            $(".depth2-wrap").slideUp(300);
-          } else {
-            $(".depth2-wrap").slideUp(300);
-            depth1All.forEach(all => {
-              all.classList.remove("active")
-            });
-            depth1.classList.add("active")
-            $(".depth1.active ~.depth2-wrap").slideDown(300);
-          }
-        }
-      }
-    })
-
-    // const depth2All = _header.querySelectorAll(".depth2")
-    // const depth3All = _header.querySelectorAll(".depth3")
-    // depth2All.forEach(all => {
-    //     all.setAttribute("tabindex", "-1");
-    // })
-    // depth3All.forEach(all => {
-    //     all.setAttribute("tabindex", "-1");
-    // })
-    // document.addEventListener('keyup', (e) => {
-    //     const _target = e.target
-    //     const depth1Item = _target.closest(".depth1-item")
-    //     const depth2Wrap = depth1Item.querySelector(".depth2-wrap")
-    //     const depth2ListH = depth2Wrap.querySelector(".depth2-list").offsetHeight
-    //     if (e.key === 'Tab') {
-    //         const focusedElement = document.activeElement
-    //         if(focusedElement.classList.contains("depth2")) {
-    //             depth2Wrap.style.height = depth2ListH + "px"
-    //         }
-    //     }
-    // });
-  }
-}
-
-function Tab() {
-
-    const tabDisplay = document.querySelectorAll(".tab-display")
-    tabDisplay.forEach(tab => {
-        const firstTab = tab.querySelector(".tab-item:first-child")
-        firstTab.classList.add("active")
-        firstTab.querySelector(".tab-text").setAttribute("aria-selected", "true")
-
-        const tabList = tab.querySelector(".tab-list")
-        tabList.addEventListener("keydown", function(e) {
-            e = event || window.event;
-            let keycode = e.keyCode || e.which;
-
-            if(!e.shiftKey && keycode === 9) {
-                let tabItem = this.querySelectorAll(".tab-item");
-                tabItem.forEach(item => {
-                    if(item.classList.contains("active")) {
-                        const button = item.querySelector(".tab-text");
-                        button.setAttribute("tabindex", "0");
-                        button.setAttribute("aria-selected", "true")
-                    } else {
-                        const button = item.querySelector(".tab-text");
-                        button.setAttribute("tabindex", "-1");
-                        button.setAttribute("aria-selected", "false");
-                    }
+        const depth1 = e.target
+        if (depth1.classList.contains("depth1")) {
+            const _width = window.innerWidth
+            if (_width < 1024) {
+            if (depth1.classList.contains("active")) {
+                depth1.classList.remove("active")
+                $(".depth2-wrap").slideUp(300);
+            } else {
+                $(".depth2-wrap").slideUp(300);
+                depth1All.forEach(all => {
+                all.classList.remove("active")
                 });
-
-                let siblingTabPanels = document.querySelectorAll(".panel-item.hidden");
-                siblingTabPanels.forEach(panel => {
-                    // panel.tabIndex = "-1";
-                });
+                depth1.classList.add("active")
+                $(".depth1.active ~.depth2-wrap").slideDown(300);
             }
+            }
+        }
         })
-        const tabButton = tab.querySelectorAll(".tab-text")
-        tabButton.forEach(button => {
-            button.addEventListener("keydown", function(e) {
-                e = event || window.event;
-                let keycode = e.keyCode || e.which;
-
-                switch(keycode) {
-                    case 37:
-                        if(this.closest('.tab-item').previousElementSibling) {
-                            this.setAttribute("tabindex", "-1")
-                            this.closest('.tab-item').previousElementSibling.querySelector('.tab-text').setAttribute("tabindex", "0")
-                            this.closest('.tab-item').previousElementSibling.querySelector('.tab-text').focus();
-                        }
-                        break;
-                    case 39:
-                        if(this.closest('.tab-item').nextElementSibling) {
-                            this.setAttribute("tabindex", "-1")
-                            this.closest('.tab-item').nextElementSibling.querySelector('.tab-text').setAttribute("tabindex", "0")
-                            this.closest('.tab-item').nextElementSibling.querySelector('.tab-text').focus();
-                        }
-                        break;
-                    case 32:
-                    case 13:
-                        if(this) {
-                            tabButton.forEach(button => {
-                                button.setAttribute("aria-selected", "false");
-                            });
-                            this.setAttribute("aria-selected", "true");
-                        }
-                        break;
-                }
-            })
-        });
-    });
-
-    const panelDisplay = document.querySelectorAll(".panel-display")
-    panelDisplay.forEach(panel => {
-        const panelItems = panel.querySelectorAll(".panel-item")
-        panelItems.forEach((item, i) => {
-            i != 0 ? item.classList.add("hidden") : ""
-        });
-    });
-    tabDisplay.forEach((tab, tabDisplayIndex) => {
-        const tabItems = tab.querySelectorAll(".tab-item")
-        tabItems.forEach((item, tabIndex) => {
-            const button = item.querySelector(".tab-text")
-            button.addEventListener("click", () => {
-                const curTab = button.closest(".tab-item")
-                tabItems.forEach(item => {
-                    item.classList.remove("active")
-                    item.querySelector('.tab-text').setAttribute("tabindex", "-1")
-                    item.querySelector('.tab-text').setAttribute("aria-selected", "false")
-                });
-                curTab.classList.add("active")
-                button.setAttribute("tabindex", "0")
-                button.setAttribute("aria-selected", "true")
-
-                panelDisplay.forEach((panelDisplay, panelDisplayIndex) => {
-                    if(tabDisplayIndex == panelDisplayIndex) {
-                        const panelItems = panelDisplay.querySelectorAll(".panel-item")
-                        panelItems.forEach((item, panelIndex) => {
-                            item.classList.add("hidden")
-                            tabIndex == panelIndex ? item.classList.remove("hidden") : ""
-                        });
-                    }
-                });
-            })
-        });
-    });
-
-
-
-    new Swiper(".tab-wrap", {
-        slidesPerView: "auto",
-        freeMode: true,
-    });
-}
-
-function input() {
-    const form = document.querySelectorAll(".form")
-
-    form.forEach(input => {
-        if(input.classList.contains("input") || input.classList.contains("search")) {
-            const inputRemove = input.querySelector(".remove")
-            if(inputRemove) {
-                input.addEventListener("keyup", () => {
-                    const inputValue = input.querySelector(".input-elem").value;
-                    inputValue ? inputRemove.style.display = "block" : inputRemove.style.display = "none";
-                })
-                inputRemove.addEventListener("click", () => {
-                    let inputElem = input.querySelector(".input-elem");
-                    inputElem.value = null;
-                    inputRemove.style.display = "none";
-                })
-            }
-            input.classList.contains("disabled") ? input.querySelector(".input-elem").setAttribute("disabled", "") : ""
-        }
-    });
-}
-
-function select() {
-    const selects = document.querySelectorAll(".form.select.design1")
-
-    for(const select of selects) {
-        if(select) {
-            const selectElement = select.querySelector("select");
-            const arrowElement = select.querySelector(".arrow .blind")
-
-            selectElement.addEventListener("keydown", function(e) {
-                if(e.keyCode === 13 || (e.keyCode == 32 && !select.classList.contains("open"))) {
-                    if(document.activeElement === selectElement) {
-                        select.classList.toggle("open")
-                    }
-                }
-                if(select.classList.contains("open")) {
-                    arrowElement.innerHTML = "열림"
-                } else {
-                    arrowElement.innerHTML = "닫힘"
-                }
-            })
-            select.addEventListener("click", () => {
-                select.classList.toggle("open")
-                if(select.classList.contains("open")) {
-                    arrowElement.innerHTML = "열림"
-                } else {
-                    arrowElement.innerHTML = "닫힘"
-                }
-            })
-            document.addEventListener("click", (e) => {
-                const _target = e.target
-                if(!_target.closest(".form.select")) {
-                for(const select of selects) {
-                    select.classList.remove("open")
-                    }
-                } else if(_target.closest(".form.select.open")) {
-                    for(const select of selects) {
-                        select.classList.remove("open")
-                    }
-                    _target.closest(".form.select").classList.add("open")
-                }
-                if(select.classList.contains("open")) {
-                    arrowElement.innerHTML = "열림"
-                } else {
-                    arrowElement.innerHTML = "닫힘"
-                }
-            })
-        }
     }
 }
+
 
 /* 아코디언 */
 function Accordion() {

@@ -16,8 +16,8 @@
         align-items: center;
         justify-content: space-between;
         .footer-head {
+            padding: 4.3rem 0 4.2rem;
             .footer-subject {
-                padding: 4.3rem 0 4.2rem;
                 color: color(gray,500);
                 @include font(small-6x,regular);
             }
