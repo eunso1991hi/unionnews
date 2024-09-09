@@ -26,7 +26,6 @@ const SRC_PATH = {
       DOC: "./src/assets/doc",
       GLTF: "./src/assets/gltf",
       MOVIES: "./src/assets/movies",
-      BOOTSTRAP: "./node_modules/bootstrap/dist",
     },
     EJS: "./src/ejs",
   },
@@ -96,7 +95,6 @@ gulp.task("js", () => {
   return gulp
     .src([
       SRC_PATH.ASSETS.JS + "/**/*.js",
-      SRC_PATH.ASSETS.BOOTSTRAP + "/js/bootstrap.bundle.min.js"
     ])
     .pipe(babel())
     .pipe(uglify()) //자바스크립트 코드를 압축해 용량을 줄임
@@ -164,7 +162,6 @@ gulp.task("watch", function () {
   gulp.watch(SRC_PATH.EJS + "/**/*.ejs", gulp.series("ejs"));
   gulp.watch(SRC_PATH.ASSETS.SCSS + "/**/*.scss", gulp.series("scss:compile"));
   gulp.watch(SRC_PATH.ASSETS.JS + "/**/*.js", gulp.series("js"));
-  gulp.watch(SRC_PATH.ASSETS.BOOTSTRAP + "/**/*.js", gulp.series("js"));
   gulp.watch(SRC_PATH.ASSETS.AJAX + "/*.js", gulp.series("ajax"));
   gulp.watch(SRC_PATH.ASSETS.MODULES + "/**/*.js", gulp.series("modules"));
   gulp.watch(SRC_PATH.ASSETS.IMAGES + "/**/*.+(png|jpg|jpeg|gif|ico)", gulp.series("images"));
