@@ -28,14 +28,9 @@ body {
 
     /* Accent */
     .accent {
-        //weight
-        &.case1 {
-            font-weight: 400 !important;
-        }
-
         //color
         &.color1 {
-            color: color(primary, 100) !important;
+            
         }
     }
 
