@@ -1,7 +1,65 @@
 #header {
+    top: 0;
+    width: 100%;
+    height: 8rem;
+    z-index: 999;
+    transition: top .5s cubic-bezier(.5,0,0,1);
+    background-color: color(deep-primary,100);
     .header-inner {
-
-        //test
-        
+        display: flex;
+        height: 100%;
+        padding: 0 3rem;
+        max-height: 8rem;
+        // justify-content: space-between;
+        align-items: center;
+        .site-logo {
+            display: inline-block;
+            .site-name {
+                width: 10.9rem;
+                height: 3rem;
+                background-image: url('../../../assets/images/logo/logo_yna_w.svg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+        }
+        .site-navi {
+            .depth1-list {
+                display: flex;
+                .depth1-item {
+                    .depth1 {
+                        display: inline-block;
+                        position: relative;
+                        padding: 2.6rem 2rem;
+                        transition: 0.3s ease;
+                        color: color(gray,000);
+                        @include font(small-3x, medium);
+                    }
+                    &.active {
+                        .depth1 {
+                            @include font(small-3x, bold);
+                        }
+                    }
+                }
+            }
+        }
+        .site-util {
+            .util-list {
+                display: flex;
+                .util-item {
+                    &.version {
+                        padding: 0.4rem 1rem;
+                        border-radius: 10rem;
+                        border: 1px solid color(gray,000,0.3);
+                        .text {
+                            color: color(gray,000);
+                            @include font(small-8x,regular);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.regular {
+        top: -8rem;
     }
 }

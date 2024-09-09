@@ -1,14 +1,19 @@
 #lnb {
     .depth2-wrap {
         .depth2-head {
-
+            .depth2-subject {
+                color: color(gray,900);
+                @include font(small-2x,bold);
+            }
         }
         
         .depth2-body {
             .depth2-list {
                 .depth2-item {
                     .depth2 {
-
+                        padding: 1rem 1.5rem;
+                        color: color(gray,400);
+                        @include font(small-3x,regular);
                     }
                 }
             }
