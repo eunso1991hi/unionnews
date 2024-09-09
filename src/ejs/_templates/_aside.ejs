@@ -1,95 +1,52 @@
 <!-- page-aside : 페이지별 앵커 영역 마크업 추가 예정 -->
-<% if (name === 'colors') { %><div class="aside">
-    <ul class="aside-list">
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Principle</a>
-                </em>
-            </div>
+<% if (name === 'colors') { %>
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Principle</a></li>
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Light and Dark mode</a></li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">Basic Color</a>
+            <a href="javascript:void(0)" class="link desc">Main Color</a>
+            <a href="javascript:void(0)" class="link desc">Sub Color</a>
+            <a href="javascript:void(0)" class="link desc">Greyscale</a>
         </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Light and Dark mode</a>
-                </em>
-            </div>
-        </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Basic Color</a>
-                </em>
-                <div class="aside-body">
-                    <ul class="anchor-list">
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Main Color</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Sub Color</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Greyscale</a></li>
-                    </ul>
-                </div>
-            </div>
+        <li class="nav-item"></li>
+            <a href="javascript:void(0)" class="link term">Semantic Color</a>
+            <a href="javascript:void(0)" class="link desc">Background</a>
+            <a href="javascript:void(0)" class="link desc">Popup box</a>
         </li>
     </ul>
 </div>
-<% } else if (name === 'typography') { %><div class="aside">
-    <ul class="aside-list">
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Typeface</a>
-                </em>
-            </div>
+<% } else if (name === 'typography') { %>
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Typeface</a></li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">Components</a>
+            <a href="javascript:void(0)" class="link desc">Heading</a>
+            <a href="javascript:void(0)" class="link desc">Title</a>
+            <a href="javascript:void(0)" class="link desc">Body</a>
+            <a href="javascript:void(0)" class="link desc">Detail</a>
+            <a href="javascript:void(0)" class="link desc">Label</a>
+            <a href="javascript:void(0)" class="link desc">Link</a>
         </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">components</a>
-                </em>
-                <div class="aside-body">
-                    <ul class="anchor-list">
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Heading</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Title</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Body</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Detail</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Label</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Link</a></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Font sizes</a>
-                </em>
-            </div>
-        </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Font weight</a>
-                </em>
-            </div>
-        </li>
-        <li class="aside-item">
-            <div class="aside-wrap">
-                <em class="aside-head">
-                    <a href="javascript:void(0)" class="aside-subject">Line height</a>
-                </em>
-                <div class="aside-body">
-                    <ul class="anchor-list">
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Heading and detail</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Body and code</a></li>
-                        <li class="anchor-item"><a href="javascript:void(0)" class="anchor">Component</a></li>
-                    </ul>
-                </div>
-            </div>
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Font sizes</a></li>
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Font weight</a></li>
+        <li class="nav-item"></li>
+            <a href="javascript:void(0)" class="link term">Line height</a>
+            <a href="javascript:void(0)" class="link desc">Heading and detail</a>
+            <a href="javascript:void(0)" class="link desc">Body and code</a>
+            <a href="javascript:void(0)" class="link desc">Component</a>
         </li>
     </ul>
 </div>
 <% } else if (name === 'layout') { %>
+<div class="aside">
 
+</div>
 <% } else if (name === 'object-styles') { %>
+<div class="aside">
 
+</div>
 <% } %>
 <!-- //page-aside -->
