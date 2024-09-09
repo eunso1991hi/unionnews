@@ -1,5 +1,5 @@
 <div class="lnb">
-<!-- 타입별 depth2 -->
+<!-- 타입별 depth2 : 이동 URL 전부 수정할 예정 (현재 javascript:void(0) 되어있는 부분)-->
 <% if (depth1 === 'foundation') { %>
     <div class="depth2-wrap foundation">
         <div class="depth2-head">
@@ -45,7 +45,9 @@
                         </ul>
                     </div>-wrap
                 </li>
-                <li class="depth2-item <%= depth2 === 'tag' ? 'active' : '' %>"><a href="javascript:void(0)" class="depth2">Tag</a></li>
+                <li class="depth2-item <%= depth2 === 'tag' ? 'active' : '' %>">
+                    <a href="javascript:void(0)" class="depth2">Tag</a>
+                </li>
                 <li class="depth2-item">
                     <a href="javascript:void(0)" class="depth2">Input</a>
                     <div class="depth3-wrap">
@@ -56,8 +58,10 @@
                         </ul>
                     </div>-wrap
                 </li>
-                <li class="depth2-item <%= depth2 === 'table' ? 'active' : '' %>"><a href="javascript:void(0)" class="depth2">Table</a></li>
-                <li class="depth2-item <%= depth2 === 'list' ? 'active' : '' %>"><a href="javascript:void(0)">
+                <li class="depth2-item <%= depth2 === 'table' ? 'active' : '' %>">
+                    <a href="javascript:void(0)" class="depth2">Table</a>
+                </li>
+                <li class="depth2-item <%= depth2 === 'list' ? 'active' : '' %>">
                     <a href="javascript:void(0)" class="depth2">List</a>
                     <div class="depth3-wrap">
                         <ul class="depth3-list">
@@ -66,7 +70,7 @@
                         </ul>
                     </div>-wrap
                 </li>
-                <li class="depth2-item <%= depth2 === 'popup' ? 'active' : '' %>"><a href="javascript:void(0)">
+                <li class="depth2-item <%= depth2 === 'popup' ? 'active' : '' %>">
                     <a href="javascript:void(0)" class="depth2">Popup</a>
                     <div class="depth3-wrap">
                         <ul class="depth3-list">
@@ -76,7 +80,7 @@
                         </ul>
                     </div>-wrap
                 </li>
-                <li class="depth2-item <%= depth2 === 'ui-elements' ? 'active' : '' %>"><a href="javascript:void(0)">
+                <li class="depth2-item <%= depth2 === 'ui-elements' ? 'active' : '' %>">
                     <a href="javascript:void(0)" class="depth2">UI Elements</a>
                     <div class="depth3-wrap">
                         <ul class="depth3-list">
@@ -95,9 +99,15 @@
         </div>
         <div class="depth2-body">
             <ul class="depth2-list">
-                <li class="depth2-item <%= depth2 === 'principles' ? 'active' : '' %>"><a href="javascript:void(0)" class="depth2">Principles</a></li>
-                <li class="depth2-item <%= depth2 === 'content-design' ? 'active' : '' %>"><a href="javascript:void(0)" class="depth2">Content design</a></li>
-                <li class="depth2-item <%= depth2 === 'design-tokens' ? 'active' : '' %>"><a href="javascript:void(0)" class="depth2">Design tokens</a></li>
+                <li class="depth2-item <%= depth2 === 'principles' ? 'active' : '' %>">
+                    <a href="javascript:void(0)" class="depth2">Principles</a>
+                </li>
+                <li class="depth2-item <%= depth2 === 'content-design' ? 'active' : '' %>">
+                    <a href="javascript:void(0)" class="depth2">Content design</a>
+                </li>
+                <li class="depth2-item <%= depth2 === 'design-tokens' ? 'active' : '' %>">
+                    <a href="javascript:void(0)" class="depth2">Design tokens</a>
+                </li>
             </ul>
         </div>
     </div>
