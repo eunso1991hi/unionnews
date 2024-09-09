@@ -7,7 +7,7 @@
     </ul>
 </div>
 <!-- page-head -->
-<header class="<%= type %>" id="header">
+<header id="header">
     <div class="header-inner">
         <div class="depth1-wrap">
             <!-- 공통 로고 -->
@@ -20,14 +20,14 @@
             <!-- 공통 네비게이션 -->
             <div class="site-navi" id="naviMenu">
                 <ul class="depth1-list">
-                    <li class="depth1-item">
-                        <a href="../foundation/colors.html" class="depth1">Foundation</a>
+                    <li class="depth1-item <%= type === 'foundation' ? 'active' : '' %>">
+                        <a href="<%= DOCUMENT_ROOT %>foundation/colors.html" class="depth1">Foundation</a>
                     </li>
-                    <li class="depth1-item">
-                        <a href="../components/top-navigation.html" class="depth1">Components</a>
+                    <li class="depth1-item <%= type === 'components' ? 'active' : '' %>">
+                        <a href="<%= DOCUMENT_ROOT %>components/top-navigation.html" class="depth1">Components</a>
                     </li>
-                    <li class="depth1-item">
-                        <a href="../guidelines/principle.html" class="depth1">Guidelines</a>
+                    <li class="depth1-item <%= type === 'guidelines' ? 'active' : '' %>">
+                        <a href="<%= DOCUMENT_ROOT %>guidelines/principle.html" class="depth1">Guidelines</a>
                     </li>
                 </ul>
             </div>
@@ -46,96 +46,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 타입별 depth2-wrap 처리 -->
-        <% if (type === 'foundation') { %>
-            <div class="depth2-wrap foundation">
-                <ul class="depth2-list">
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">colors</a></li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Typography</a></li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Layout</a></li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Object Styles</a></li>
-                </ul>
-            </div>
-        <% } else if (type === 'guidelines') { %>
-            <div class="depth2-wrap foundation">
-                <ul class="depth2-list">
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Principles</a></li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Content design</a></li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Design tokens</a></li>
-                </ul>
-            </div> 
-        <% } else if (type === 'components') { %>
-            <div class="depth2-wrap foundation">
-                <ul class="depth2-list">
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">Navigation</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Top Navigation</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Button Navigation</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Navigation drawer</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Footer </a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">Button</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Box Button</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Text Button</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Tab Button</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Floating Button</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Icon Button</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Select Button</a></li>
-                            </ul>
-                        </div>-wrap
-                    </li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Tag</a></li>
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">Input</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Text Field</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Dropdown</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Search</a></li>
-                            </ul>
-                        </div>-wrap
-                    </li>
-                    <li class="depth2-item"><a href="javascript:void(0)" target="_self" class="depth2">Table</a></li>
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">List</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Data List</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Accordion</a></li> 
-                            </ul>
-                        </div>-wrap
-                    </li>
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">Popup</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Layer Popup</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Alert&Snackbar</a></li> 
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Tooltip</a></li>
-                            </ul>
-                        </div>-wrap
-                    </li>
-                    <li class="depth2-item">
-                        <a href="javascript:void(0)" target="_self" class="depth2">UI Elements</a>
-                        <div class="depth2-wrap">
-                            <ul class="depth3-list">
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Thumbnail</a></li>
-                                <li class="depth3-item"><a href="javascript:void(0)" target="_self" class="depth3">Loading</a></li> 
-                            </ul>
-                        </div>-wrap
-                    </li>
-                </ul>
-            </div>
-        <% } %>
     </div>
 </header>
-
 <!-- //page-head -->

@@ -5,36 +5,39 @@
 </head>
 <body>
 <div id="wrap">
-    <!-- <%-include('../_templates/_header.ejs', { type: 'foundation' , page: 'Colors' }) %> -->
-    <%-include('../_templates/_header.ejs', { type: 'foundation' ,}) %>
+    <%-include('../_templates/_header.ejs', { type: 'foundation' , }) %>
     <!-- page-body -->
     <div class="main foundation colors" id="main">
         <div class="main-inner">
-            <div class="local">
+            <div class="local"> 
                 <div class="local-head">
                     <div class="local-subject">
                         <h2 class="local-name">Colors 디자인 가이드</h2>
                     </div>
                 </div>
                 <div class="local-body">
-                    <div class="content-head">
-                        <h3 class="content-name">Colors</h3>
-                        <p class="content-summary">연합뉴스 웹/앱에서 사용하는 컬러를 정의합니다.</p>
-                    </div>
-                    <div class="content-body">
-                        <div class="section design4 case2 type1 brand-ci">
-                            <div class="section-wrap">
-                                <div class="section-head">
-                                    <div class="section-subject">
-                                        <h4 class="section-name">Principle</h4>
+                    <%-include('../_templates/_lnb.ejs', { depth1: 'foundation', depth2: 'colors', depth3: null }) %>
+                    <div class="content">
+                        <div class="content-head">
+                            <h3 class="content-name">Colors</h3>
+                            <p class="content-summary">연합뉴스 웹/앱에서 사용하는 컬러를 정의합니다.</p>
+                        </div>
+                        <div class="content-body"> 
+                            <div class="section design4 case2 type1 brand-ci">
+                                <div class="section-wrap">
+                                    <div class="section-head">
+                                        <div class="section-subject">
+                                            <h4 class="section-name">Principle</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="section-body">
-
+                                    <div class="section-body">
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <%-include('../_templates/_aside.ejs', { name: 'colors', }) %>
                 </div>
             </div>
         </div>

@@ -68,7 +68,7 @@ gulp.task("html", () => {
 gulp.task("ejs", function () {
   return gulp
     .src([SRC_FOLDER + "/ejs/**/!(_)*.ejs", SRC_FOLDER + "/*.ejs"])
-    .pipe(ejs())
+    .pipe(ejs({ DOCUMENT_ROOT: "/" }))  // 여기서 변수 전달
     .pipe(rename({ extname: ".html" }))
     .pipe(
       fileinclude({
