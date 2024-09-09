@@ -10,7 +10,7 @@
             <a href="javascript:void(0)" class="link desc">Sub Color</a>
             <a href="javascript:void(0)" class="link desc">Greyscale</a>
         </li>
-        <li class="nav-item"></li>
+        <li class="nav-item">
             <a href="javascript:void(0)" class="link term">Semantic Color</a>
             <a href="javascript:void(0)" class="link desc">Background</a>
             <a href="javascript:void(0)" class="link desc">Popup box</a>
@@ -32,7 +32,7 @@
         </li>
         <li class="nav-item"><a href="javascript:void(0)" class="link term">Font sizes</a></li>
         <li class="nav-item"><a href="javascript:void(0)" class="link term">Font weight</a></li>
-        <li class="nav-item"></li>
+        <li class="nav-item">
             <a href="javascript:void(0)" class="link term">Line height</a>
             <a href="javascript:void(0)" class="link desc">Heading and detail</a>
             <a href="javascript:void(0)" class="link desc">Body and code</a>
@@ -41,12 +41,70 @@
     </ul>
 </div>
 <% } else if (name === 'layout') { %>
-<div class="aside">
-
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">Responsive layout grid</a>
+            <a href="javascript:void(0)" class="link desc">Break point</a>
+            <a href="javascript:void(0)" class="link desc">Contents area</a>
+        </li>
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Spacing</a></li>
+    </ul>
 </div>
 <% } else if (name === 'object-styles') { %>
-<div class="aside">
-
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">Radius</a>
+            <a href="javascript:void(0)" class="link desc">Small rounding</a>
+            <a href="javascript:void(0)" class="link desc">Default rounding</a>
+            <a href="javascript:void(0)" class="link desc">ETC rounding</a>
+            <a href="javascript:void(0)" class="link desc">Full rounding</a>
+        </li>
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">Border width</a></li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">Shadow</a>
+            <a href="javascript:void(0)" class="link desc">Default shadow</a>
+            <a href="javascript:void(0)" class="link desc">On Light Gray</a>
+        </li>
+    </ul>
+</div>
+<% } else if (name === 'principles') { %>
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">디자인 원칙</a></li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">원칙을 따르기 위한 주요 방안</a>
+            <a href="javascript:void(0)" class="link desc">Responsive</a>
+            <a href="javascript:void(0)" class="link desc">Accessibility</a>
+            <a href="javascript:void(0)" class="link desc">Visual Hierarchy</a>
+            <a href="javascript:void(0)" class="link desc">Meaningful text</a>
+        </li>
+    </ul>
+</div>
+<% } else if (name === 'content-design') { %>
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="javascript:void(0)" class="link term">디자인</a></li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">모범 사례</a>
+            <a href="javascript:void(0)" class="link desc">대체 텍스트는 짧게</a>
+            <a href="javascript:void(0)" class="link desc">차트와 그래프는 요약해서 작성</a>
+            <a href="javascript:void(0)" class="link desc">평범한 언어를 사용</a>
+            <a href="javascript:void(0)" class="link desc">사용자 시각의 흐름</a>
+        </li>
+    </ul>
+</div>
+<% } else if (name === 'design-tokens') { %>
+<div class="quick-nav">
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="link term">디자인 토큰이란?</a>
+            <a href="javascript:void(0)" class="link desc">Global tokens</a>
+            <a href="javascript:void(0)" class="link desc">Alias tokens</a>
+            <a href="javascript:void(0)" class="link desc">Theming</a>
+        </li>
+    </ul>
 </div>
 <% } %>
 <!-- //page-aside -->
