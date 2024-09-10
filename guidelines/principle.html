@@ -43,24 +43,6 @@
     <script>
         hljs.initHighlightingOnLoad();
     </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const basePath = window.location.hostname === 'localhost' ? '/' : '/unionnews/';
-
-            document.querySelectorAll('a[href]').forEach(link => {
-                const href = link.getAttribute('href');
-
-                // 외부 링크(http, https)와 앵커 링크(#)는 제외
-                if (!href.startsWith('http') && !href.startsWith('#')) {
-                    // 절대 경로로 시작하지 않는 내부 링크만 basePath 추가
-                    if (!href.startsWith('/')) {
-                        link.href = basePath + href;
-                    }
-                }
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -78,7 +60,7 @@
             <div class="header-inner">
                 <!-- 공통 로고 -->
                 <h1 class="site-logo">
-                    <a href="./main/index.html" class="site-name">
+                    <a href="/main/index.html" class="site-name">
                         <span class="blind">연합뉴스</span>
                     </a>
                 </h1>
@@ -88,13 +70,13 @@
                     <div class="depth1-wrap">
                         <ul class="depth1-list">
                             <li class="depth1-item ">
-                                <a href="./foundation/colors.html" class="depth1">Foundation</a>
+                                <a href="/foundation/colors.html" class="depth1">Foundation</a>
                             </li>
                             <li class="depth1-item ">
-                                <a href="./components/top-navigation.html" class="depth1">Components</a>
+                                <a href="/components/top-navigation.html" class="depth1">Components</a>
                             </li>
                             <li class="depth1-item active">
-                                <a href="./guidelines/principle.html" class="depth1">Guidelines</a>
+                                <a href="/guidelines/principle.html" class="depth1">Guidelines</a>
                             </li>
                         </ul>
                     </div>
