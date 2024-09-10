@@ -18,6 +18,11 @@ frontCommon.Html = (function () {
     }
 })();
 
+const basePath = window.location.hostname === 'localhost' ? '/' : '/unionnews/';
+document.querySelectorAll('a.depth1').forEach(link => {
+    link.href = basePath + link.getAttribute('href');
+});
+
 function frontCommonResize() {
     window.addEventListener("resize", () => {
         const _header = document.getElementById("header")
