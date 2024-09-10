@@ -60,36 +60,6 @@ if (_header) {
         }
     })
 
-
-    // depth2가 8개 이상일 때 고유 스타일 추가
-    depth1Item.forEach(depth1Item => {
-        const depth2List = depth1Item.querySelector(".depth2-list")
-        const depth2Length = depth2List.querySelectorAll(".depth2-item").length
-        if (depth2Length > 7) {
-            depth2List.style.maxWidth = "73.6rem"
-            depth2List.style.flexWrap = "wrap"
-        }
-    });
-
-    // hover, focus 클래스 추가 이벤트
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-            setTimeout(() => {
-                const focusedElement = document.activeElement
-                depth1Item.forEach(depth1Item => {
-                    depth1Item.classList.remove("active");
-                })
-                let focusdepth1 = focusedElement.closest(".depth1-item")
-                if(focusdepth1) {
-                    siteNavi.classList.remove("close")
-                    focusdepth1.classList.add("active")
-                }
-                if(!focusedElement.closest(".site-navi")) {
-                    siteNavi.classList.add("close")
-                }
-            }, 0);
-        }
-    });
     _header.querySelectorAll("*").forEach(element => {
         element.addEventListener('mouseenter', (e) => {
             depth1Item.forEach(depth1Item => {

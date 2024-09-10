@@ -84,7 +84,7 @@ gulp.task("scss:compile", function () {
   return gulp
     .src(SRC_PATH.ASSETS.SCSS + "/*.scss")
     .pipe(sourcemaps.init())
-    .pipe(scss(OPTIONS))
+    .pipe(scss(OPTIONS).on('error', scss.logError))
     .pipe(autoprefixer()) // 최신 css를 구형 브라우저에서 이해할 수 있게 prefix를 만들어줌
     .pipe(sourcemaps.write('.')) // 소스 맵을 CSS 파일과 같은 디렉토리에 별도 파일로 저장
     .pipe(gulp.dest(DEST_PATH.ASSETS.CSS))
