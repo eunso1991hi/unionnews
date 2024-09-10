@@ -43,34 +43,8 @@ const SRC_PATH = {
     precision: 8,
   };
 
-// 환경에 따라 DOCUMENT_ROOT 설정
-function setProductionEnv(done) {
-  process.env.NODE_ENV = 'production';  // NODE_ENV를 production으로 설정
-  done();
-}
-
-const isProduction = process.env.NODE_ENV === "production";
-const DOCUMENT_ROOT = isProduction ? "/unionnews/" : "/";
-
-
 gulp.task("clean", function () {
   return del(["dist"]);
-});
-
-gulp.task("ejs", function () {
-  return gulp
-    .src([SRC_FOLDER + "/ejs/**/!(_)*.ejs", SRC_FOLDER + "/*.ejs"])
-    .pipe(ejs({ DOCUMENT_ROOT }))  // 환경에 따른 DOCUMENT_ROOT 값 사용
-    .pipe(rename({ extname: ".html" }))
-    .pipe(
-      fileinclude({
-        prefix: "@@", 
-        basepath: "@file",
-      })
-    )
-    .pipe(htmlbeautify({ indentSize: 2 }))
-    .pipe(gulp.dest(DIST_FOLDER))
-    .pipe(browserSync.stream());
 });
 
 gulp.task("html", () => {
@@ -79,6 +53,22 @@ gulp.task("html", () => {
       base: SRC_FOLDER,
       since: gulp.lastRun("html"),
     })
+    .pipe(gulp.dest(DIST_FOLDER))
+    .pipe(browserSync.stream());
+});
+
+gulp.task("ejs", function () {
+  return gulp
+    .src([SRC_FOLDER + "/ejs/**/!(_)*.ejs", SRC_FOLDER + "/*.ejs"])
+    .pipe(ejs({ DOCUMENT_ROOT: "/" }))  // 여기서 변수 전달
+    .pipe(rename({ extname: ".html" }))
+    .pipe(
+      fileinclude({
+        prefix: "@@", //사용할땐 앞에@@ 를 붙이면됨
+        basepath: "@file",
+      })
+    )
+    .pipe(htmlbeautify({ indentSize: 2 }))
     .pipe(gulp.dest(DIST_FOLDER))
     .pipe(browserSync.stream());
 });
@@ -201,7 +191,7 @@ const defaultTask = gulp.series(clean, build, gulp.parallel("browserSync", watch
 const dev = gulp.series(build, gulp.parallel("browserSync", watchFiles));
 
 // Deploy task
-const deploy = gulp.series('gh', 'cleanDeploy', gulp.series(setProductionEnv, "ejs", "html"));
+const deploy = gulp.series('gh', 'cleanDeploy');
 
 // Export tasks using CommonJS
 module.exports = {

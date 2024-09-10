@@ -37,21 +37,3 @@
 <script src="../assets/js/swiper-bundle.min.js"></script>
 <script src="../assets/js/common.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const basePath = window.location.hostname === 'localhost' ? '/' : '/unionnews/';
-
-        document.querySelectorAll('a[href]').forEach(link => {
-            const href = link.getAttribute('href');
-
-            // 외부 링크(http, https)와 앵커 링크(#)는 제외
-            if (!href.startsWith('http') && !href.startsWith('#')) {
-            // 절대 경로로 시작하지 않는 내부 링크만 basePath 추가
-            if (!href.startsWith('/')) {
-                link.href = basePath + href;
-            }
-            }
-        });
-    });
-</script>
