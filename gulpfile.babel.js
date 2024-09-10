@@ -13,26 +13,26 @@ const browserSync = require("browser-sync").create();
 const ghPages = require("gulp-gh-pages");
 const del = require("del");
 
-const SRC_FOLDER = "./src/";
-const DIST_FOLDER = "./dist/";
+const SRC_FOLDER = "./src/unionnews";
+const DIST_FOLDER = "./dist/unionnews";
 
 const SRC_PATH = {
     ASSETS: {
-        FONTS: "./src/assets/fonts",
-        IMAGES: "./src/assets/images",
-        SCSS: "./src/assets/scss",
-        JS: "./src/assets/js",
-        MOVIES: "./src/assets/movies",
+        FONTS: "./src/unionnews/assets/fonts",
+        IMAGES: "./src/unionnews/assets/images",
+        SCSS: "./src/unionnews/assets/scss",
+        JS: "./src/unionnews/assets/js",
+        MOVIES: "./src/unionnews/assets/movies",
     },
-    EJS: "./src/ejs",
+    EJS: "./src/unionnews/ejs",
   },
   DEST_PATH = {
     ASSETS: {
-        FONTS: "./dist/assets/fonts",
-        IMAGES: "./dist/assets/images",
-        CSS: "./dist/assets/css",
-        JS: "./dist/assets/js",
-        MOVIES: "./dist/assets/movies",
+        FONTS: "./dist/unionnews/assets/fonts",
+        IMAGES: "./dist/unionnews/assets/images",
+        CSS: "./dist/unionnews/assets/css",
+        JS: "./dist/unionnews/assets/js",
+        MOVIES: "./dist/unionnews/assets/movies",
     },
   },
   // 옵션
@@ -138,7 +138,7 @@ gulp.task("browserSync", function () {
         notify: false,
         port: 9000,
         server: {
-            baseDir: ["dist"],
+            baseDir: ["dist/unionnews"],
             open: true,
         },
     });
