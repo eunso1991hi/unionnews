@@ -10,6 +10,7 @@ const uglify = require("gulp-uglify");
 const autoprefixer = require("gulp-autoprefixer");
 const rename = require("gulp-rename");
 const browserSync = require("browser-sync").create();
+const ghPages = require("gulp-gh-pages");
 const del = require("del");
 
 const SRC_FOLDER = "./src/";
@@ -17,29 +18,21 @@ const DIST_FOLDER = "./dist/";
 
 const SRC_PATH = {
     ASSETS: {
-      FONTS: "./src/assets/fonts",
-      IMAGES: "./src/assets/images",
-      SCSS: "./src/assets/scss",
-      JS: "./src/assets/js",
-      AJAX: "./src/assets/ajax",
-      MODULES: "./src/assets/modules",
-      DOC: "./src/assets/doc",
-      GLTF: "./src/assets/gltf",
-      MOVIES: "./src/assets/movies",
+        FONTS: "./src/assets/fonts",
+        IMAGES: "./src/assets/images",
+        SCSS: "./src/assets/scss",
+        JS: "./src/assets/js",
+        MOVIES: "./src/assets/movies",
     },
     EJS: "./src/ejs",
   },
   DEST_PATH = {
     ASSETS: {
-      FONTS: "./dist/assets/fonts",
-      IMAGES: "./dist/assets/images",
-      CSS: "./dist/assets/css",
-      JS: "./dist/assets/js",
-      AJAX: "./dist/assets/ajax",
-      MODULES: "./dist/assets/modules",
-      DOC: "./dist/assets/doc",
-      GLTF: "./dist/assets/gltf",
-      MOVIES: "./dist/assets/movies",
+        FONTS: "./dist/assets/fonts",
+        IMAGES: "./dist/assets/images",
+        CSS: "./dist/assets/css",
+        JS: "./dist/assets/js",
+        MOVIES: "./dist/assets/movies",
     },
   },
   // 옵션
@@ -102,20 +95,6 @@ gulp.task("js", () => {
     .pipe(browserSync.stream());
 });
 
-gulp.task("ajax", () => {
-  return gulp
-    .src(SRC_PATH.ASSETS.AJAX + "/*.js")
-    .pipe(gulp.dest(DEST_PATH.ASSETS.AJAX))
-    .pipe(browserSync.stream());
-});
-
-gulp.task("modules", () => {
-  return gulp
-    .src(SRC_PATH.ASSETS.MODULES + "/*.+(js|json|xml|txt)")
-    .pipe(gulp.dest(DEST_PATH.ASSETS.MODULES))
-    .pipe(browserSync.stream());
-});
-
 gulp.task("images", () => {
   return gulp
     .src(SRC_PATH.ASSETS.IMAGES + "/**/*.+(png|jpg|jpeg|gif|ico)")
@@ -137,20 +116,6 @@ gulp.task("fonts", () => {
     .pipe(browserSync.stream());
 });
 
-gulp.task("doc", () => {
-  return gulp
-    .src(SRC_PATH.ASSETS.DOC + "/**/*")
-    .pipe(gulp.dest(DEST_PATH.ASSETS.DOC))
-    .pipe(browserSync.stream());
-});
-
-gulp.task("gltf", () => {
-  return gulp
-    .src(SRC_PATH.ASSETS.GLTF + "/**/*")
-    .pipe(gulp.dest(DEST_PATH.ASSETS.GLTF))
-    .pipe(browserSync.stream());
-});
-
 gulp.task("movies", () => {
   return gulp
     .src(SRC_PATH.ASSETS.MOVIES + "/*")
@@ -162,27 +127,79 @@ gulp.task("watch", function () {
   gulp.watch(SRC_PATH.EJS + "/**/*.ejs", gulp.series("ejs"));
   gulp.watch(SRC_PATH.ASSETS.SCSS + "/**/*.scss", gulp.series("scss:compile"));
   gulp.watch(SRC_PATH.ASSETS.JS + "/**/*.js", gulp.series("js"));
-  gulp.watch(SRC_PATH.ASSETS.AJAX + "/*.js", gulp.series("ajax"));
-  gulp.watch(SRC_PATH.ASSETS.MODULES + "/**/*.js", gulp.series("modules"));
   gulp.watch(SRC_PATH.ASSETS.IMAGES + "/**/*.+(png|jpg|jpeg|gif|ico)", gulp.series("images"));
   gulp.watch(SRC_PATH.ASSETS.IMAGES + "/**/*.svg", gulp.series("svg"));
   gulp.watch(SRC_PATH.ASSETS.FONTS + "/**/*.+(eot|otf|svg|ttf|woff|woff2)", gulp.series("fonts"));
-  gulp.watch(SRC_PATH.ASSETS.DOC + "/**/*", gulp.series("doc"));
-  gulp.watch(SRC_PATH.ASSETS.GLTF + "/**/*", gulp.series("gltf"));
   gulp.watch(SRC_PATH.ASSETS.MOVIES + "/*", gulp.series("movies"));
 });
 
 gulp.task("browserSync", function () {
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ["dist/"],
-      open: true,
-    },
-  });
+    browserSync.init({
+        notify: false,
+        port: 9000,
+        server: {
+            baseDir: ["dist"],
+            open: true,
+        },
+    });
 });
 
-gulp.task("build", gulp.series("html", "ejs", "scss:compile", "js", "ajax", "modules", "images", "svg", "fonts", "doc", "gltf", "movies", gulp.parallel("browserSync", "watch")));
+function clean() {
+    return del([DIST_FOLDER]);
+}
 
-gulp.task("default", gulp.series("clean", "build", gulp.parallel("browserSync", "watch")));
+// 'gh' 작업 정의
+gulp.task('gh', function () {
+    return gulp.src(DIST_FOLDER + '/**/*')
+    .pipe(ghPages());
+});
+
+// 'cleanDeploy' 작업 정의
+gulp.task('cleanDeploy', function () {
+    return del([".publish"]);
+});
+
+// Prepare task
+const prepare = gulp.series(clean);
+
+// Build task
+const build = gulp.series(
+    prepare,
+    gulp.parallel("html", "ejs", "scss:compile", "js", "images", "svg", "fonts", "movies")
+);
+
+// Watch task
+function watchFiles() {
+    gulp.watch(SRC_PATH.EJS + "/**/*.ejs", gulp.series("ejs"));
+    gulp.watch(SRC_PATH.ASSETS.SCSS + "/**/*.scss", gulp.series("scss:compile"));
+    gulp.watch(SRC_PATH.ASSETS.JS + "/**/*.js", gulp.series("js"));
+    gulp.watch(SRC_PATH.ASSETS.IMAGES + "/**/*.+(png|jpg|jpeg|gif|ico)", gulp.series("images"));
+    gulp.watch(SRC_PATH.ASSETS.IMAGES + "/**/*.svg", gulp.series("svg"));
+    gulp.watch(SRC_PATH.ASSETS.FONTS + "/**/*.+(eot|otf|svg|ttf|woff|woff2)", gulp.series("fonts"));
+    gulp.watch(SRC_PATH.ASSETS.MOVIES + "/*", gulp.series("movies"));
+}
+
+// gulp.task("build", gulp.series("html", "ejs", "scss:compile", "js", "images", "svg", "fonts", "movies", gulp.parallel("browserSync", "watch")));
+
+// gulp.task("default", gulp.series("clean", "build", gulp.parallel("browserSync", "watch")));
+
+
+// Default task
+const defaultTask = gulp.series(clean, build, gulp.parallel("browserSync", watchFiles));
+
+// Dev task
+const dev = gulp.series(build, gulp.parallel("browserSync", watchFiles));
+
+// Deploy task
+const deploy = gulp.series('gh', 'cleanDeploy');
+
+// Export tasks using CommonJS
+module.exports = {
+  clean,
+  prepare,
+  build,
+  watch: watchFiles,
+  default: defaultTask,
+  dev,
+  deploy
+};
