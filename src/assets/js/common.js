@@ -37,130 +37,25 @@ function frontCommonScroll() {
 function header() {
     const body = document.querySelector("body")
     const _header = document.getElementById("header")
-    const depth1Item = _header.querySelectorAll(".depth1-item")
     const depth1All = document.querySelectorAll('.depth1')
     const depth2WrapAll = document.querySelectorAll(".depth2-wrap")
-    const siteNavi = _header.querySelector(".site-navi")
 
-if (_header) {
-    window.addEventListener("resize", () => {
-        const _width = window.innerWidth
-        if(_width >= 1024) {
-            _header.classList.remove("open")
-            _header.removeAttribute("style")
-
-            for (const item of depth1All) {
-                item.classList.remove("active")
-            }
-            for (const item of depth2WrapAll) {
-                item.removeAttribute("style")
-            }
-
-            body.style.overflow = "auto";
-        }
-    })
-
-    _header.querySelectorAll("*").forEach(element => {
-        element.addEventListener('mouseenter', (e) => {
-            depth1Item.forEach(depth1Item => {
-                depth1Item.classList.remove("active");
-            })
-            let hoverdepth1 = e.target.closest(".depth1-item")
-            if(hoverdepth1) {
-                siteNavi.classList.remove("close")
-                hoverdepth1.classList.add("active")
-            }
-            if(!e.target.closest(".site-navi")) {
-                siteNavi.classList.add("close")
-            }
-        });
-    })
-
-    // 언어 셀렉트버튼 기능
-    const lang = document.getElementById("lang")
-    const selected = lang.querySelector(".selected")
-    const optionArea = lang.querySelector(".option-area")
-
-    selected.addEventListener("click", function () {
-      optionArea.classList.contains("active") ? optionArea.classList.remove("active") : optionArea.classList.add("active")
-    })
-
-    //
-
-    _header.addEventListener("mouseenter", () => {
-        _header.classList.add("hover")
-    })
-    _header.addEventListener("mouseleave", () => {
-        _header.classList.remove("hover")
-    })
-
-    document.addEventListener("focusin", function(e) {
-        const _target = e.target
-        if(_target.closest(".dark") || _target.closest(".transparent")) {
-            _header.classList.add("hover")
-        } else {
-            _header.classList.remove("hover")
-        }
-    })
-
-    // MO > 메뉴 열기/닫기
-    const navi = _header.querySelector(".site-navi")
-    const util = _header.querySelector(".site-util")
-    const menuHeader = _header.querySelector(".btn.menu-header")
-    const menuHeadertxt = menuHeader.querySelector(".btn-text")
-
-    let i = 1;
-    for (const item of depth1Item) {
-        item.style.animationDelay = (0.15 * i) + "s";
-        i++;
-    }
-
-    menuHeader.addEventListener("click", function() {
-        if(_header.classList.contains("open")) {
-            body.style.overflow = "auto";
-            menuHeadertxt.innerHTML = "메뉴 열기"
-            _header.style.height = "5.8rem"
-            setTimeout(() => {
+    if (_header) {
+        window.addEventListener("resize", () => {
+            const _width = window.innerWidth
+            if(_width >= 1024) {
                 _header.classList.remove("open")
+                _header.removeAttribute("style")
+
                 for (const item of depth1All) {
                     item.classList.remove("active")
                 }
                 for (const item of depth2WrapAll) {
-                    item.classList.remove("active")
-                    $(".depth2-wrap").slideUp(300);
+                    item.removeAttribute("style")
                 }
-            }, 300);
-        } else {
-            body.style.overflow = "hidden";
-            menuHeadertxt.innerHTML = "메뉴 닫기"
-            navi.style.display = "block"
-            util.style.display = "flex"
-            _header.style.height = "100%"
-            setTimeout(() => {
-                _header.classList.add("open")
-            }, 300);
-        }
-    })
 
-    // MO > depth1 드롭다운 열림/닫힘 기능
-    document.addEventListener("click", function (e) {
-        const depth1 = e.target
-        if (depth1.classList.contains("depth1")) {
-            const _width = window.innerWidth
-            if (_width < 1024) {
-            if (depth1.classList.contains("active")) {
-                depth1.classList.remove("active")
-                $(".depth2-wrap").slideUp(300);
-            } else {
-                $(".depth2-wrap").slideUp(300);
-                depth1All.forEach(all => {
-                all.classList.remove("active")
-                });
-                depth1.classList.add("active")
-                $(".depth1.active ~.depth2-wrap").slideDown(300);
+                body.style.overflow = "auto";
             }
-            }
-        }
         })
     }
 }

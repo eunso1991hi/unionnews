@@ -21,7 +21,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
-    "build": "gulp build"
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -35,5 +37,9 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "three": "^0.146.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bono121212/unionnews.github.io.git"
   }
 }
