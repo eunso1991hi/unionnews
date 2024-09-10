@@ -5,6 +5,8 @@ $tablet : 1024px;
 $web-small : 1280px;
 $web : 1920px;
 
+// img path
+$img-path: '../../assets/images/';
 
 // color palettes : Light, Dark mode
 $color-palettes: (
@@ -122,8 +124,3 @@ $font-weight: (
     extrabold: 800,
     heavy: 900,
 );
-
-@mixin font($size, $weight: regular) {
-    font-weight: map-get($font-weight, $weight);
-    font-size: map-get($font-size, $size);
-}

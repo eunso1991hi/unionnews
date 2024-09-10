@@ -10,7 +10,8 @@
                     color: color(gray,600);
                     @include font(small-4x)
                 }
-                + .data-body {
+                + .data-body,
+                + .data-figure {
                     margin-top: 2rem;
                 }
             }

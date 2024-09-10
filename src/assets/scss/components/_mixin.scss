@@ -94,3 +94,8 @@
         border-radius: 5rem;
     }
 }
+
+@mixin font($size, $weight: regular) {
+    font-weight: map-get($font-weight, $weight);
+    font-size: map-get($font-size, $size);
+}

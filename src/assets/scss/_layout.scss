@@ -1,13 +1,13 @@
 #wrap {
     position: relative;
-    height: 200vh;
     .main {
         .local-body {
             display: flex;
             .content {
-                min-width: 98rem;
-                margin-top: 20rem;
-                margin-left: 16rem;
+                min-width: 122rem;
+                padding-top: 20rem;
+                padding-left: 16rem;
+                padding-bottom: 20rem;
                 .content-head {
                     .content-name {
                         color: color(gray,900);
