@@ -5,7 +5,6 @@ frontCommon.Html = (function () {
         instance = {
         reset: function () {
             frontCommonResize();
-            //frontCommonScroll();
             header();
             },
         };
@@ -20,11 +19,7 @@ frontCommon.Html = (function () {
 
 function frontCommonResize() {
     window.addEventListener("resize", () => {
-        const _header = document.getElementById("header")
-        const modalShow = document.querySelector(".modal.show");
-        if(modalShow) {
-            _header.classList.add("regular")
-        }
+
     });
 }
 
@@ -35,31 +30,34 @@ function frontCommonScroll() {
 }
 
 function header() {
-    const body = document.querySelector("body")
-    const _header = document.getElementById("header")
-    const depth1All = document.querySelectorAll('.depth1')
-    const depth2WrapAll = document.querySelectorAll(".depth2-wrap")
+    let lastScrollTop = 0; //마지막 스크롤 top값
+    const delta = 15; //작은 스크롤 이동을 무시하기 위한 기준값 (더 민감하게(작은 값) 또는 둔감하게(큰 값) 조절)
+    let ticking = false;
 
-    if (_header) {
-        window.addEventListener("resize", () => {
-            const _width = window.innerWidth
-            if(_width >= 1024) {
-                _header.classList.remove("open")
-                _header.removeAttribute("style")
+    window.addEventListener('scroll', function() {
+        if(!ticking) {
+            window.requestAnimationFrame(function(){
+                handleScroll();
+                ticking = false;
+            })
+            ticking = true;
+        }
+    })
 
-                for (const item of depth1All) {
-                    item.classList.remove("active")
-                }
-                for (const item of depth2WrapAll) {
-                    item.removeAttribute("style")
-                }
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop; //현재 스크롤 위치 가져오기
 
-                body.style.overflow = "auto";
-            }
-        })
+        if (Math.abs(lastScrollTop - scrollTop) <= delta) return; //현 스크롤위치를 절대값으로. delta보다 작을면 return으로 함수 종료.
+
+        if (scrollTop > lastScrollTop) {
+            document.getElementById('header').classList.add('active');
+        } else if (scrollTop < lastScrollTop) {
+            document.getElementById('header').classList.remove('active');
+        }
+
+        lastScrollTop = scrollTop; //현재 스크롤위치를 마지막 스크롤값에 저장
     }
 }
-
 
 /* 아코디언 */
 function Accordion() {

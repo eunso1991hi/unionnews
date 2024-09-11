@@ -58,33 +58,33 @@ gulp.task("html", () => {
     .pipe(browserSync.stream());
 });
 
-// gulp.task("ejs", function () {
-//   return gulp
-//     .src([SRC_PATH.EJS + "/**/!(_)*.ejs", SRC_PATH.EJS + "/*.ejs"])
-//     .pipe(ejs({ DOCUMENT_ROOT: "/" }))  // 여기서 변수 전달
-//     .pipe(rename({ extname: ".html" }))
-//     .pipe(
-//       fileinclude({
-//         prefix: "@@", //사용할땐 앞에@@ 를 붙이면됨
-//         basepath: "@file",
-//       })
-//     )
-//     .pipe(htmlbeautify({ indentSize: 2 }))
-//     .pipe(gulp.dest(DIST_FOLDER))
-//     .pipe(browserSync.stream());
-// });
-
 gulp.task("ejs", function () {
   return gulp
     .src([SRC_PATH.EJS + "/**/!(_)*.ejs", SRC_PATH.EJS + "/*.ejs"])
-    .pipe(ejs({ 
-      DOCUMENT_ROOT: isProduction ? '' : '/'  // 배포 환경에서는 상대경로 사용
-    })) 
+    .pipe(ejs({ DOCUMENT_ROOT: "/" }))  // 여기서 변수 전달
     .pipe(rename({ extname: ".html" }))
+    .pipe(
+      fileinclude({
+        prefix: "@@", //사용할땐 앞에@@ 를 붙이면됨
+        basepath: "@file",
+      })
+    )
     .pipe(htmlbeautify({ indentSize: 2 }))
-    .pipe(gulp.dest(DEST_PATH.EJS))
+    .pipe(gulp.dest(DIST_FOLDER))
     .pipe(browserSync.stream());
 });
+
+// gulp.task("ejs", function () {
+//   return gulp
+//     .src([SRC_PATH.EJS + "/**/!(_)*.ejs", SRC_PATH.EJS + "/*.ejs"])
+//     .pipe(ejs({ 
+//       DOCUMENT_ROOT: isProduction ? '' : '/'  // 배포 환경에서는 상대경로 사용
+//     })) 
+//     .pipe(rename({ extname: ".html" }))
+//     .pipe(htmlbeautify({ indentSize: 2 }))
+//     .pipe(gulp.dest(DEST_PATH.EJS))
+//     .pipe(browserSync.stream());
+// });
 
 gulp.task("scss:compile", function () {
   return gulp
