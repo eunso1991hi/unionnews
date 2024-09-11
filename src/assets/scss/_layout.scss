@@ -3,13 +3,20 @@
     .main {
         min-height: calc(100vh - 10rem);
         .local-body {
+            position: relative;
             display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
             .content {
-                min-width: 122rem;
-                padding-top: 20rem;
-                padding-left: 16rem;
-                padding-bottom: 20rem;
+                position: relative;
+                .content-inner {
+                    min-width: 122rem;
+                    padding-top: 20rem;
+                    padding-left: 16rem;
+                    padding-bottom: 20rem;
+                }
                 .content-head {
+                    width: 98rem;
                     .content-name {
                         color: color(gray,900);
                         @include font(large-4x,bold);
@@ -23,6 +30,7 @@
                     }
                 }
                 .content-body {
+                    width: 98rem;
                     .section {
                         + .section {
                             margin-top: 8rem;
