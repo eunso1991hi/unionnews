@@ -1,1 +1,47 @@
-layout 페이지입니다.
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<%-include('../_templates/_head.ejs') %>
+</head>
+<body>
+<div id="wrap">
+    <%-include('../_templates/_header.ejs', { type: 'foundation' , }) %>
+    <!-- page-body -->
+    <div class="main foundation" id="main">
+        <div class="main-inner">
+            <div class="local"> 
+                <div class="local-head">
+                    <div class="local-subject">
+                        <h2 class="local-name blind">Layout 디자인 가이드</h2>
+                    </div>
+                </div>
+                <div class="local-body">
+                    <%-include('../_templates/_lnb.ejs', { depth1: 'foundation', depth2: 'layout', depth3: null }) %>
+                    <div class="content">
+                        <div class="content-head">
+                            <h3 class="content-name">Layout</h3>
+                            <p class="content-summary">화면에 있는 요소들의 시각적 배열을 다양한 디바이스에서도 일관성을 유지할 수 있도록 도와줍니다.</p>
+                        </div>
+                        <div class="content-body">
+                            <div class="section">
+                                <div class="section-wrap">
+                                    <div class="section-head"> 
+                                        <h4 class="section-subject">Responsive layout grid</h4>
+                                    </div>
+                                    <div class="section-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%-include('../_templates/_aside.ejs', { name: 'layout', }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //page-body -->
+    <%-include('../_templates/_footer.ejs') %>
+</div>
+</body>
+</html>

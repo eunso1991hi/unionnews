@@ -7,7 +7,7 @@
 <div id="wrap">
     <%-include('../_templates/_header.ejs', { type: 'guidelines' , }) %>
     <!-- page-body -->
-    <div class="main guidelines principles" id="main">
+    <div class="main guidelines" id="main">
         <div class="main-inner">
             <div class="local"> 
                 <div class="local-head">
@@ -35,9 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="aside">
-                        
-                    </div>
+                    <%-include('../_templates/_aside.ejs', { name: 'principles', }) %>
                 </div>
             </div>
         </div>

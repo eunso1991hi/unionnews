@@ -50,12 +50,53 @@
         }
     }
     .depth3-wrap {
+        position: relative;
+        margin-left: 2.8rem;
+        &::before {
+            content: '';
+            border-left: 1px solid color(gray,200);
+            height: calc(100% - 3.6rem);
+            position: absolute;
+            left: -0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
         .depth3-item {
             .depth3 {
                 display: block;
+                position: relative;
                 padding: 0.6rem 1rem;
+                border-radius: 0.2rem;
                 color: color(gray,400);
                 @include font(small-4x,regular);
+            }
+            &.active {
+                .depth3 {
+                    display: flex;
+                    align-items: center;
+                    background-color: color(bg,blue);
+                    color: color(primary,100);
+                    @include font(small-4x,medium);
+                    &:after {
+                        content:'';
+                        display: inline-block;
+                        width: 1.6rem;
+                        height: 1.6rem;
+                        background-image: icon(arrow-right, color(primary,100));
+                        background-repeat: no-repeat;
+                        background-size: 0.7rem 1.1rem;
+                        background-position: center;
+                    }
+                    &:before {
+                        content:'';
+                        position: absolute;
+                        left: -0.75rem;
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        border-radius: 100%;
+                        background-color: color(primary,100);
+                    }
+                }
             }
         }
     }
