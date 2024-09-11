@@ -33,31 +33,6 @@
     }
 }
 
-// 반응형
-@mixin mobile2 {
-    @media (max-width:#{$mobile-large - 1}) {
-        @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width:#{$tablet - 1}) {
-        @content;
-    }
-}
-
-@mixin web2 {
-    @media (max-width:#{$web-small - 1}) {
-        @content;
-    }
-}
-
-@mixin web {
-    @media (min-width:#{$tablet}) {
-        @content;
-    }
-}
-
 // scroll
 @mixin scroll-x {
     width: calc(100% + 3.6rem);

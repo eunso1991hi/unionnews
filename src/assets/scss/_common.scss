@@ -14,18 +14,6 @@ body {
         overflow: hidden;
     }
 
-    @include web {
-        .mo-only {
-            display: none !important;
-        }
-    }
-
-    @include mobile {
-        .pc-only {
-            display: none !important;
-        }
-    }
-
     /* Accent */
     .accent {
         //color
@@ -44,8 +32,8 @@ body {
                     right: 0;
                     left: 0;
                     height: 5.6rem;
-                    // background: color(neutral, 080);
-                    // color: color(system, 070);
+                    background: color(gray, 900);
+                    color: color(gray, 000);
                     font-size: 16px;
                     line-height: 5.6rem;
                     text-align: center;

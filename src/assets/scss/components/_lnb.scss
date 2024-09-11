@@ -10,7 +10,8 @@
         position: absolute;
         right: 0;
         top: 0;
-        height: 100vh;
+        height: 100%;
+        min-height: 100vh;
     }
     .depth2-wrap {
         .depth2-head {
@@ -34,13 +35,27 @@
                         @include font(small-3x,regular);
                     }
                     &.active {
-                        .depth2 {
+                        .depth2:not(.dropdown) {
                             background: color(bg,blue);
                             color: color(primary,100);
                             @include font(small-3x,medium);
                         }
+                        .depth2.dropdown {
+                            color: color(gray,900);
+                            @include font(small-3x,medium);
+                        }
                     }
                 }
+            }
+        }
+    }
+    .depth3-wrap {
+        .depth3-item {
+            .depth3 {
+                display: block;
+                padding: 0.6rem 1rem;
+                color: color(gray,400);
+                @include font(small-4x,regular);
             }
         }
     }
