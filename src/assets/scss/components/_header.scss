@@ -27,6 +27,9 @@
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
             }
+            + .site-navi {
+                margin-left: 16.1rem;
+            }
         }
         .site-navi {
             .depth1-list {
@@ -35,10 +38,13 @@
                     .depth1 {
                         display: inline-block;
                         position: relative;
-                        padding: 2.6rem 2rem;
+                        padding: 2.6rem 0;
                         transition: 0.3s ease;
                         color: color(gray,000);
                         @include font(small-3x, medium);
+                    }
+                    + .depth1-item {
+                        margin-left: 4rem;
                     }
                     &.active {
                         .depth1 {
@@ -49,7 +55,8 @@
             }
         }
         .site-util {
-            align-self: flex-end;
+            margin-right: 0;
+            margin-left: auto;
             .util-list {
                 display: flex;
                 .util-item {
