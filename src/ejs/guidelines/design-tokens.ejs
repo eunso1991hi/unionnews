@@ -3,33 +3,33 @@
 <head>
 <%-include('../_templates/_head.ejs') %>
 </head>
-<body>
+<body> 
 <div id="wrap">
-    <%-include('../_templates/_header.ejs', { type: 'foundation' , }) %>
+    <%-include('../_templates/_header.ejs', { type: 'guidelines' , }) %>
     <!-- page-body -->
-    <div class="main foundation" id="main">
+    <div class="main guidelines" id="main">
         <div class="main-inner">
             <div class="local"> 
                 <div class="local-head">
                     <div class="local-subject">
-                        <h2 class="local-name blind">Object Styles 디자인 가이드</h2>
+                        <h2 class="local-name blind">Design tokens 디자인 가이드</h2>
                     </div>
                 </div>
                 <div class="local-body">
-                    <%-include('../_templates/_lnb.ejs', { depth1: 'foundation', depth2: 'object-styles', depth3: null }) %>
+                    <%-include('../_templates/_lnb.ejs', { depth1: 'guidelines', depth2: 'design-tokens', depth3: null }) %>
                     <div class="content">
                         <div class="content-inner">
                             <div class="content-head">
-                                <h3 class="content-name">Object Styles</h3>
-                                <p class="content-summary">Object Style은 세 가지 시각적 요소인 Radius, Border Width, Shadow를 분류하여 전체 UI에서 시각적 일관성을 유지합니다.<br> 버튼 및 텍스트 입력 상자와 같은 디자인 구성 요소 컨테이너에 적용되는 스타일 속성을 정의합니다.</p>
+                                <h3 class="content-name">Design tokens</h3>
+                                <p class="content-summary">디자인 토큰은 색상, 타이포그래피, 간격 또는 고도와 같은 스타일을 할당하는 데 사용되는 저장된 값입니다.<br> 토큰 시스템을 사용하면 공통 언어를 사용하고 플랫폼과 분야에서 일관된 디자인을 보장할 수 있습니다.</p>
                             </div>
                             <div class="content-body">
                                 <div class="section">
                                     <div class="section-wrap">
-                                        <div class="section-head"> 
-                                            <h4 class="section-subject">Radius</h4>
+                                        <div class="section-head">
+                                            <h4 class="section-subject">디자인 토큰이란?</h4>
                                         </div>
-                                        <div class="section-body">
+                                        <div class="section-body"> 
                                             
                                         </div>
                                     </div>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <%-include('../_templates/_aside.ejs', { name: 'object-styles', }) %>
+                    <%-include('../_templates/_aside.ejs', { name: 'design-tokens', }) %>
                 </div>
             </div>
         </div>

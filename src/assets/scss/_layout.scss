@@ -1,19 +1,21 @@
 #wrap {
     position: relative;
+    min-width: 1720px;
+    min-height: 100vh;
     .main {
         min-height: calc(100vh - 10rem);
         .local-body {
             position: relative;
             display: flex;
             align-items: flex-start;
-            justify-content: space-between;
+            // justify-content: space-between;
             .content {
                 position: relative;
                 .content-inner {
                     min-width: 122rem;
                     padding-top: 20rem;
                     padding-left: 16rem;
-                    padding-bottom: 20rem;
+                    padding-bottom: 30rem;
                 }
                 .content-head {
                     width: 98rem;

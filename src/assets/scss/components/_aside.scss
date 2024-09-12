@@ -1,6 +1,7 @@
 .quick-nav {
     min-width: 20rem;
     padding-top: 22rem;
+    padding-left: 1rem;
     position: sticky;
     top: 0;
     align-self: flex-start;
@@ -10,37 +11,47 @@
         .nav-item {
             .link {
                 display: block;
-                &.term {
-                    padding: 0.6rem 1rem;
+            }
+            &.term {
+                .link {
+                    padding: 0.6rem 1rem 0.6rem 0;
                     color: color(gray,400);
                     @include font(small-6x,medium)
                 }
-                &.desc {
-                    position: relative;
-                    padding: 0.4rem 1.5rem;
-                    margin-left: 1rem;
+            }
+            &.desc {
+                position: relative;
+                .link {
+                    padding: 0.4rem 0.8rem;
+                    margin: 0 0.7rem;
+                    border-radius: 0.2rem;
                     color: color(gray,400);
                     @include font(small-7x,regular);
-                    &:before {
-                        content: '';
-                        width: 1px;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        border-left: 1px solid color(gray,200);
-                    }
-                    + .term {
-                        margin-top: 0.8rem;
-                    }
                 }
-                &.active {
-                    &.term {
+                &:before {
+                    content: '';
+                    width: 1px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-left: 1px solid color(gray,200);
+                }
+                + .term {
+                    margin-top: 0.8rem;
+                }
+            }
+            &.active {
+                &.term {
+                    .link {
                         color: color(gray,900);
                     }
-                    
-                    &.desc {
-        
+                }
+                
+                &.desc {
+                    .link {
+                        color: color(primary,100);
+                        background-color: color(bg,blue);
                     }
                 }
             }
